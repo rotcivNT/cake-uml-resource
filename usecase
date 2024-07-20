@@ -1,0 +1,66 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor LightBlue
+  BorderColor DarkBlue
+}
+
+actor Guest as G #Pink
+actor User as U #LightGreen
+actor Admin as A #Orange
+
+rectangle "Hệ thống Bánh Ngọt" {
+  usecase "Đăng ký" as UC1
+  usecase "Đăng nhập" as UC2
+  usecase "Tìm kiếm sản phẩm" as UC3
+  usecase "Lọc sản phẩm theo danh mục" as UC4
+  usecase "Xem chi tiết sản phẩm" as UC5
+  usecase "Thêm sản phẩm vào giỏ hàng" as UC6
+  usecase "Xem giỏ hàng" as UC7
+  usecase "Cập nhật số lượng sản phẩm trong giỏ hàng" as UC8
+  
+  usecase "Cập nhật thông tin cá nhân" as UC9
+  usecase "Đăng xuất" as UC10
+  usecase "Đặt hàng và thanh toán" as UC11
+  usecase "Xem lịch sử mua hàng" as UC12
+  
+  usecase "Quản lý sản phẩm" as UC13 #LightYellow
+  usecase "Quản lý hóa đơn" as UC14 #LightYellow
+  
+  usecase "Thêm sản phẩm" as UC13_1
+  usecase "Cập nhật sản phẩm" as UC13_2
+  usecase "Xóa sản phẩm" as UC13_3
+  usecase "Lọc sản phẩm (Admin)" as UC13_4
+  
+  usecase "Tìm kiếm hóa đơn" as UC14_1
+  usecase "Lọc hóa đơn" as UC14_2
+  usecase "Xem chi tiết hóa đơn" as UC14_3
+  usecase "Cập nhật trạng thái hóa đơn" as UC14_4
+}
+
+G --> UC1
+G --> UC2
+G --> UC3
+G --> UC4
+G --> UC5
+G --> UC6
+G --> UC7
+UC7 <.. UC8 : <<extend>>
+U --> UC9
+U --> UC10
+U --> UC11
+U --> UC12
+A --> UC13
+A --> UC14
+UC13 <|-- UC13_1
+UC13 <|-- UC13_2
+UC13 <|-- UC13_3
+UC13 <|-- UC13_4
+UC14 <|-- UC14_1
+UC14 <|-- UC14_2
+UC14 <|-- UC14_3
+UC14_3 <.. UC14_4 : <<extend>>
+U --|> G
+A --|> U
+@enduml
