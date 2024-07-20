@@ -14,11 +14,11 @@ rectangle "Hệ thống Bánh Ngọt" {
   usecase "Đăng ký" as UC1
   usecase "Đăng nhập" as UC2
   usecase "Tìm kiếm sản phẩm" as UC3
-  usecase "Lọc sản phẩm theo danh mục" as UC4
+  usecase "Lọc sản phẩm" as UC4
   usecase "Xem chi tiết sản phẩm" as UC5
   usecase "Thêm sản phẩm vào giỏ hàng" as UC6
   usecase "Xem giỏ hàng" as UC7
-  usecase "Cập nhật số lượng sản phẩm trong giỏ hàng" as UC8
+  usecase "Cập nhật số lượng sản phẩm" as UC8
   
   usecase "Cập nhật thông tin cá nhân" as UC9
   usecase "Đăng xuất" as UC10
@@ -31,7 +31,6 @@ rectangle "Hệ thống Bánh Ngọt" {
   usecase "Thêm sản phẩm" as UC13_1
   usecase "Cập nhật sản phẩm" as UC13_2
   usecase "Xóa sản phẩm" as UC13_3
-  usecase "Lọc sản phẩm (Admin)" as UC13_4
   
   usecase "Tìm kiếm hóa đơn" as UC14_1
   usecase "Lọc hóa đơn" as UC14_2
@@ -56,7 +55,6 @@ A --> UC14
 UC13 <|-- UC13_1
 UC13 <|-- UC13_2
 UC13 <|-- UC13_3
-UC13 <|-- UC13_4
 UC14 <|-- UC14_1
 UC14 <|-- UC14_2
 UC14 <|-- UC14_3
