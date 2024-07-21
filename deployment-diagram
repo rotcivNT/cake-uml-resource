@@ -1,0 +1,54 @@
+@startuml
+!define RECTANGLE rectangle
+!define DATABASE database
+
+' Define skin parameters for colors and styles
+skinparam node {
+    BackgroundColor #F5F5F5
+    BorderColor #B0B0B0
+    FontColor #333333
+}
+skinparam rectangle {
+    BackgroundColor #E0F7FA
+    BorderColor #00796B
+    FontColor #004D40
+}
+skinparam database {
+    BackgroundColor #FFE0B2
+    BorderColor #FF5722
+    FontColor #BF360C
+}
+skinparam arrow {
+    Color #5D4037
+    FontColor #5D4037
+}
+
+' Define nodes and components
+node "Vercel" as vercel {
+    RECTANGLE "Next.js\nFrontend" as frontend
+}
+
+node "Railway Cloud" as railway {
+    RECTANGLE "File Service" as file_service
+    RECTANGLE "Auth Service" as auth_service
+    RECTANGLE "Product Service" as product_service
+    RECTANGLE "Shopping Service" as shopping_service
+    
+    DATABASE "MySQL" as mysql
+}
+
+' Define interactions with straight lines
+frontend --> file_service : HTTPS
+frontend --> auth_service : HTTPS
+frontend --> product_service : HTTPS
+frontend --> shopping_service : HTTPS
+
+shopping_service -left-> auth_service : RestTemplate
+shopping_service -left-> product_service : RestTemplate
+
+file_service --> mysql : JDBC
+auth_service --> mysql : JDBC
+product_service --> mysql : JDBC
+shopping_service --> mysql : JDBC
+
+@enduml
