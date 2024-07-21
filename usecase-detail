@@ -86,6 +86,7 @@ start
 :Trở về trang chủ;
 stop
 @enduml
+
 @startuml
 actor "User" as User
 participant "TCake" as System
@@ -94,3 +95,6 @@ User -> System: Chọn đăng xuất
 System -> System: Hủy phiên làm việc hiện tại của tài khoản
 System -> User: Chuyển hướng đến trang chủ
 @enduml
+
+#### UC-04 ####
+
