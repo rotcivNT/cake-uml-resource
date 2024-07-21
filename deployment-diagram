@@ -37,6 +37,8 @@ node "Railway Cloud" as railway {
     DATABASE "MySQL" as mysql
 }
 
+cloud "Cloudinary Cloud Storage" as cloudinary
+
 ' Define interactions with straight lines
 frontend --> file_service : HTTPS
 frontend --> auth_service : HTTPS
@@ -47,6 +49,7 @@ shopping_service -left-> auth_service : RestTemplate
 shopping_service -left-> product_service : RestTemplate
 
 file_service --> mysql : JDBC
+file_service --> cloudinary : API
 auth_service --> mysql : JDBC
 product_service --> mysql : JDBC
 shopping_service --> mysql : JDBC
