@@ -1,0 +1,121 @@
+@startuml
+left to right direction
+entity User {
+    - String id
+    - LocalDateTime createdAt
+    - LocalDateTime updatedAt
+    - String addressDetail
+    - String district
+    - String email
+    - String fullName
+    - boolean isBlock
+    - String password
+    - String phoneNumber
+    - String province
+    - String ward
+    - String clerkUserId
+}
+
+entity CartItem {
+    - productId: String
+    - variantId: String
+    - createdAt: DateTime
+    - updatedAt: DateTime
+    - quantity: Integer
+    - sessionId: String
+}
+
+entity Category {
+    - id: int
+    - name: String
+    - parentId: int
+    - createdAt: DateTime
+    - updatedAt: DateTime
+}
+
+entity ShoppingSession {
+    - id: int
+    - description: String
+    - userId: String
+    - createdAt: DateTime
+    - updatedAt: DateTime
+}
+
+entity Order {
+    - id: int
+    - description: String
+    - total: double
+    - shippingAddress: String
+    - status: String
+    - userId: String
+    - paymentId: String
+    - createdAt: DateTime
+    - updatedAt: DateTime
+}
+
+entity PaymentDetail {
+    - id: String
+    - amount: double
+    - status: String
+    - type: String
+    - createdAt: DateTime
+    - updatedAt: DateTime
+}
+
+entity Product {
+    - id: String
+    - categoryId: String
+    - description: String
+    - name: String
+    - thumbnail: String
+    - createdAt: DateTime
+    - updatedAt: DateTime
+}
+
+entity Gallery {
+    - id: String
+    - productId: String
+    - url: String
+    - createdAt: DateTime
+    - updatedAt: DateTime
+}
+
+entity OrderDetail {
+    - orderId: String
+    - productId: String
+    - variantId: String
+    - quantity: int
+    - price: double
+    - createdAt: DateTime
+    - updatedAt: DateTime
+}
+
+entity Variant {
+    - id: String
+    - variantKey: String
+    - variantValue: String
+    - createdAt: DateTime
+    - updatedAt: DateTime
+}
+
+class ProductVariant {
+    - productId: String
+    - variantId: String
+    - price: double
+    - createdAt: DateTime
+    - updatedAt: DateTime
+}
+
+User "1" -- "1" ShoppingSession: "        "
+User "1" -- "0..*" Order
+ShoppingSession "1" -- "*" CartItem
+ProductVariant "1" -- "1" CartItem
+Category "1" -- "0..*" Product
+Product "1" -- "0..*" Gallery
+Order "1" -- "*" OrderDetail
+ProductVariant "1" -- "1" OrderDetail
+Variant "1" -- "0..*" ProductVariant
+Product "1" -- "0..*" ProductVariant
+Order "1" -- "1" PaymentDetail
+
+@enduml
