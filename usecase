@@ -30,12 +30,16 @@ rectangle "Hệ thống Bánh Ngọt" {
   
   usecase "Thêm sản phẩm" as UC13_1
   usecase "Cập nhật sản phẩm" as UC13_2
-  usecase "Xóa sản phẩm" as UC13_3
+  usecase "Ẩn sản phẩm" as UC13_3
   
   usecase "Tìm kiếm hóa đơn" as UC14_1
   usecase "Lọc hóa đơn" as UC14_2
   usecase "Xem chi tiết hóa đơn" as UC14_3
   usecase "Cập nhật trạng thái hóa đơn" as UC14_4
+  usecase "Xem và so sánh thống kê" as UC15
+  usecase "Theo ngày" as UC15_1
+  usecase "Theo tháng" as UC15_2
+  usecase "Theo năm" as UC15_3
 }
 
 G --> UC1
@@ -52,6 +56,7 @@ U --> UC11
 U --> UC12
 A --> UC13
 A --> UC14
+A --> UC15
 UC13 <|-- UC13_1
 UC13 <|-- UC13_2
 UC13 <|-- UC13_3
@@ -59,6 +64,9 @@ UC14 <|-- UC14_1
 UC14 <|-- UC14_2
 UC14 <|-- UC14_3
 UC14_3 <.. UC14_4 : <<extend>>
+UC15 <|-- UC15_1
+UC15 <|-- UC15_2
+UC15 <|-- UC15_3
 U --|> G
 A --|> U
 @enduml
