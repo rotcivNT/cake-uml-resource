@@ -70,6 +70,7 @@ entity Product {
     - thumbnail: String
     - createdAt: DateTime
     - updatedAt: DateTime
+    - isStop: boolean
 }
 
 entity Gallery {
